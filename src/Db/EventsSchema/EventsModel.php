@@ -33,7 +33,8 @@ class EventsModel extends Model
     }
 
     public function getOne(int $id): ?Event {
-        return clone $this->findByPK(['id' => $id]);
+        $event = $this->findByPK(['id' => $id]);
+        return $event ? clone $event : null;
     }
 
     /**
