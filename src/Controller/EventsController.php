@@ -175,9 +175,12 @@ class EventsController
     private function validateEventData($data)
     {
         $constraint = new Collection([
-            'startDate' => new Date(),
-            'endDate'  => new Date(),
-            'maxSlots' => new NotBlank(),
+            'fields' => [
+                'startDate' => new Date(),
+                'endDate'  => new Date(),
+                'maxSlots' => new NotBlank(),
+            ],
+            'allowExtraFields' => true,
         ]);
 
         $violationList = $this->getValidator()->validate($data, $constraint);
