@@ -54,6 +54,7 @@ class EventsService
 
             if ($event->getMaxSlots() > $oldEvent->getMaxSlots()) {
                 $newAvailableSlots += $event->getMaxSlots() - $oldEvent->getMaxSlots();
+                $event->setAvailableSlots($newAvailableSlots);
             } else if ($event->getMaxSlots() < $oldEvent->getMaxSlots()) {
                 $newAvailableSlots -= ($oldEvent->getMaxSlots() - $event->getMaxSlots());
 
@@ -64,9 +65,8 @@ class EventsService
                         409
                     );
                 }
+                $event->setAvailableSlots($newAvailableSlots);
             }
-
-            $event->setAvailableSlots($newAvailableSlots);
         }
 
         return $this->getEventsModel()->save($event);

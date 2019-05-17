@@ -121,16 +121,14 @@ class EventsController
                     throw new \Exception('Resource ID does not match the payload ID.', 400);
                 }
 
-                $event = $this->getEventsService()->getOne($id);
+                $existingEvent = $this->getEventsService()->getOne($id);
 
-                if (!$event) {
+                if (!$existingEvent) {
                     throw new \Exception('Event not found.', 404);
                 }
-
-                $event = $this->updateEvent($event, $payload);
-            } else {
-                $event = new Event($payload);
             }
+
+            $event = new Event($payload);
 
             $savedEvent = $this->getEventsService()->save($event);
             $this->result['data'] = $savedEvent->toArray();
@@ -193,33 +191,6 @@ class EventsController
         }
 
         return $errors;
-    }
-
-    /**
-     * @param Event $event
-     * @param array $data
-     * @return Event
-     * @throws \Exception
-     */
-    private function updateEvent(Event $event, array $data): Event
-    {
-        $updatedEvent = new Event($data);
-
-        $availableSlots = $event->getAvailableSlots();
-
-        if ($updatedEvent->getMaxSlots() > $event->getMaxSlots()) {
-            $availableSlots += $updatedEvent->getMaxSlots() - $event->getMaxSlots();
-        } else if ($updatedEvent->getMaxSlots() < $event->getMaxSlots()) {
-            $availableSlots += $event->getMaxSlots() - $updatedEvent->getMaxSlots();
-
-            if ($availableSlots < 0) {
-                throw new \Exception('Registration exceed available slots.', 422);
-            }
-        }
-
-        $updatedEvent->setAvailableSlots($availableSlots);
-
-        return $updatedEvent;
     }
 
     /**
