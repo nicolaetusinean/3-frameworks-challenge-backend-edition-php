@@ -64,6 +64,10 @@ class EventsService
                         409
                     );
                 }
+            } else {
+                if (!is_null($event->getAvailableSlots())) {
+                    $newAvailableSlots = $event->getAvailableSlots();
+                }
             }
 
             $event->setAvailableSlots($newAvailableSlots);
