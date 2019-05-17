@@ -1,0 +1,24 @@
+app.api.events.one:
+  path: /v1/events/{id}
+  defaults: { _controller: App\Controller\EventsController::getOne }
+  methods: GET
+
+app.api.events.all:
+  path: /v1/events
+  defaults: { _controller: App\Controller\EventsController::getAll }
+  methods: GET
+
+app.api.events.create:
+  path: /v1/events
+  defaults: { _controller: App\Controller\EventsController::save }
+  methods: POST
+
+app.api.events.update:
+  path: /v1/events/{id}
+  defaults: { _controller: App\Controller\EventsController::save }
+  methods: PUT
+
+app.api.events.delete:
+  path: /v1/events/{id}
+  defaults: { _controller: App\Controller\EventsController::delete }
+  methods: DELETE

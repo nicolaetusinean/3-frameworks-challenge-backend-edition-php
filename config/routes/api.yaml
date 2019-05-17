@@ -1,0 +1,5 @@
+events:
+  resource: 'api/events.yaml'
+
+registrations:
+  resource: 'api/registrations.yaml'

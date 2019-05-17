@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "6a86e75f-ea06-4c06-b876-4b3059e564a8",
+		"name": "EventManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "events/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/itests/event-manager-api/public/index.php/api/v1/events/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"itests",
+						"event-manager-api",
+						"public",
+						"index.php",
+						"api",
+						"v1",
+						"events",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/itests/event-manager-api/public/index.php/api/v1/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"itests",
+						"event-manager-api",
+						"public",
+						"index.php",
+						"api",
+						"v1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\": \"2019-05-11\",\n    \"endDate\": \"2019-05-31\",\n    \"maxSlots\": 15\n}"
+				},
+				"url": {
+					"raw": "http://localhost/itests/event-manager-api/public/index.php/api/v1/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"itests",
+						"event-manager-api",
+						"public",
+						"index.php",
+						"api",
+						"v1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"startDate\": \"2019-05-16\",\n    \"endDate\": \"2019-05-31\",\n    \"maxSlots\": 10\n}"
+				},
+				"url": {
+					"raw": "http://localhost/itests/event-manager-api/public/index.php/api/v1/events/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"itests",
+						"event-manager-api",
+						"public",
+						"index.php",
+						"api",
+						"v1",
+						"events",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/itests/event-manager-api/public/index.php/api/v1/events/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"itests",
+						"event-manager-api",
+						"public",
+						"index.php",
+						"api",
+						"v1",
+						"events",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events/{id}/registrations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/itests/event-manager-api/public/index.php/api/v1/events/1/registrations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"itests",
+						"event-manager-api",
+						"public",
+						"index.php",
+						"api",
+						"v1",
+						"events",
+						"1",
+						"registrations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events/{id}/registrations",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Nicolae\",\n    \"lastName\": \"Tusinean\",\n    \"phone\": \"+00555555555\",\n    \"email\": \"first.last@email.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost/itests/event-manager-api/public/index.php/api/v1/events/1/registrations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"itests",
+						"event-manager-api",
+						"public",
+						"index.php",
+						"api",
+						"v1",
+						"events",
+						"1",
+						"registrations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registrations/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost/itests/event-manager-api/public/index.php/api/v1/registrations/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"itests",
+						"event-manager-api",
+						"public",
+						"index.php",
+						"api",
+						"v1",
+						"registrations",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

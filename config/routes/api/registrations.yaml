@@ -1,0 +1,14 @@
+app.api.registrations.all:
+  path: /v1/events/{eventId}/registrations
+  defaults: { _controller: App\Controller\RegistrationsController::getAllByEvent }
+  methods: GET
+
+events.api.registrations.create:
+  path: /v1/events/{eventId}/registrations
+  defaults: { _controller: App\Controller\RegistrationsController::save }
+  methods: POST
+
+events.api.registrations.delete:
+  path: /v1/registrations/{id}
+  defaults: { _controller: App\Controller\RegistrationsController::delete }
+  methods: DELETE
