@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\Constraints\Collection;
-use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -60,6 +59,7 @@ class EventsController
 
             $this->result['data'] = $event->toArray();
         } catch (\Exception $ex) {
+            $this->result['success']  = false;
             $this->result['errors'][] = $ex->getMessage();
             $this->status = $ex->getCode() ?
                 ($ex->getCode() < 100 || $ex->getCode() > 600 ? 500 : $ex->getCode())  : 500;
@@ -84,6 +84,7 @@ class EventsController
 
             $this->result['data'] = $results;
         } catch (\Exception $ex) {
+            $this->result['success']  = false;
             $this->result['errors'][] = $ex->getMessage();
             $this->status = $ex->getCode() ?
                 ($ex->getCode() < 100 || $ex->getCode() > 600 ? 500 : $ex->getCode())  : 500;
@@ -105,6 +106,10 @@ class EventsController
             }
 
             $payload = json_decode($request->getContent(), true);
+
+            if ($payload === null) {
+                throw new \Exception('Payload format was not recognized as JSON.', 400);
+            }
 
             $validationErrors = $this->validateEventData($payload);
 
@@ -133,6 +138,7 @@ class EventsController
             $savedEvent = $this->getEventsService()->save($event);
             $this->result['data'] = $savedEvent->toArray();
         } catch (\Exception $ex) {
+            $this->result['success']  = false;
             $this->result['errors'][] = $ex->getMessage();
             $this->status = $ex->getCode() ?
                 ($ex->getCode() < 100 || $ex->getCode() > 600 ? 500 : $ex->getCode())  : 500;
@@ -158,6 +164,7 @@ class EventsController
 
             $this->result['data'] = $event->toArray();
         } catch (\Exception $ex) {
+            $this->result['success']  = false;
             $this->result['errors'][] = $ex->getMessage();
             $this->status = $ex->getCode() ?
                 ($ex->getCode() < 100 || $ex->getCode() > 600 ? 500 : $ex->getCode())  : 500;
