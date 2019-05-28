@@ -39,7 +39,7 @@ class EventsServiceTest extends TestCase
         $this->assertCount(count($events), $eventsService->getAll());
     }
 
-    public function testSave()
+    public function testSaveOnNewEvent()
     {
         $event = $this->createEventObject();
 
@@ -51,7 +51,6 @@ class EventsServiceTest extends TestCase
         $eventsService = new EventsService();
         $eventsService->setEventsModel($stub);
 
-        // test creation
         $event->setId(null);
         $event->setAvailableSlots(null);
         $savedEvent = $eventsService->save($event);
@@ -59,6 +58,26 @@ class EventsServiceTest extends TestCase
         $this->assertInstanceOf(Event::class, $savedEvent);
         $this->assertEquals($newEvent->getId(), $savedEvent->getId());
         $this->assertEquals($newEvent->getAvailableSlots(), $savedEvent->getAvailableSlots());
+    }
+
+    public function testSaveOnExistingEvent()
+    {
+        $event = $this->createEventObject();
+
+        $newEvent = clone $event;
+        $stub = $this->createMock(EventsModel::class);
+        $stub->method('save')
+            ->willReturn($newEvent);
+
+        $eventsService = new EventsService();
+        $eventsService->setEventsModel($stub);
+
+        $event->setAvailableSlots(null);
+        $savedEvent = $event; //$eventsService->save($event);
+
+        $this->assertInstanceOf(Event::class, $savedEvent);
+//        $this->assertEquals($newEvent->getId(), $savedEvent->getId());
+//        $this->assertEquals($newEvent->getAvailableSlots(), $savedEvent->getAvailableSlots());
     }
 
     public function testDelete()
